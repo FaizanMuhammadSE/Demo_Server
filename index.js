@@ -1,14 +1,19 @@
 import express from "express";
+import dotenvironment from "dotenv";
 const app = express();
 const port = process.env.PORT || 2000;
 import cors from "cors";
 import admin from "firebase-admin";
+
 const corsOptions = {
 	origin: "*",
 	credentials: true, //access-control-allow-credentials:true
 	optionSuccessStatus: 200,
 };
 
+console.log("no value of foo: ", process.env.FOO);
+dotenvironment.config();
+console.log("VALUE of foo: ", process.env.FOO);
 admin.initializeApp({
 	credential: admin.credential.applicationDefault(),
 });
